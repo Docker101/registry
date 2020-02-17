@@ -6,3 +6,11 @@ services:
     - 5000:5000
     volumes:
     - ./config/config.yml:/var/lib/registry/config.yml
+  webserver:
+    image: nginx:1.15.12-alpine
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - /etc/letsencrypt:/etc/letsencrypt
